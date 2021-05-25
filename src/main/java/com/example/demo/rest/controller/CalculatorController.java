@@ -2,22 +2,42 @@ package com.example.demo.rest.controller;
 
 import com.example.demo.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.lang.NonNull;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/calculator")
+@RequestMapping("/calculadora")
 public class CalculatorController {
 
   @Autowired
   CalculatorService calculatorService;
 
-  @GetMapping("/add")
-  public Integer add(@RequestParam Integer a, @RequestParam Integer b) {
-    return calculatorService.add(a, b);
+  @GetMapping("/suma")
+  public Integer suma(@RequestParam Integer a, @RequestParam Integer b) {
+    return calculatorService.suma(a, b);
   }
+
+  @GetMapping("/resta")
+  public Integer resta(@RequestParam Integer a, @RequestParam Integer b) {
+    return calculatorService.resta(a, b);
+  }
+
+  @GetMapping("/multiplica")
+  public Integer multiplica(@RequestParam Integer a, @RequestParam Integer b) {
+    return calculatorService.multiplica(a, b);
+  }
+
+  @GetMapping("/divide")
+  public Integer divide(@RequestParam Integer a, @RequestParam Integer b) {
+    return calculatorService.divide(a, b);
+  }
+
+  @PostMapping(path="/suma")
+  public Integer sumaCalculo(Integer a, Integer b) {
+    return calculatorService.suma(a, b);
+  }
+
 
   // Ejercicio
   // Crear el método "add", debe ser un método POST
