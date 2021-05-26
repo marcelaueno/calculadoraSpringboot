@@ -1,10 +1,13 @@
 package com.example.demo.rest.controller;
 
+import com.example.demo.domain.Numeros;
 import com.example.demo.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/calculadora")
@@ -34,8 +37,8 @@ public class CalculatorController {
   }
 
   @PostMapping(path="/suma")
-  public Integer sumaCalculo(Integer a, Integer b) {
-    return calculatorService.suma(a, b);
+  public Integer sumaCalculo(List<Numeros> numeros) {
+    return calculatorService.suma(numeros);
   }
 
 
